@@ -2,8 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/blog/',
   head: [
-    ['link', { rel: 'icon', href: '/logo.svg' }],
+    ['link', { rel: 'icon', href: '/blog/logo.svg' }],
   ],
   title: "狗子吹头的知识库",
   description: "前端开发html/css/javascript/vue/react/node/express 后端开发python/flask/mysql/Django",
