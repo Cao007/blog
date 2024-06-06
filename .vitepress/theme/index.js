@@ -2,6 +2,8 @@
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import Test from './components/Test.vue'
+import Comment from './components/Comment.vue'
 
 /** @type {import('vitepress').Theme} */
 export default {
@@ -9,9 +11,11 @@ export default {
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
+      'doc-after': () => h(Comment)
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
+    // 注册全局vue组件
+    app.component('Test', Test)
   }
 }

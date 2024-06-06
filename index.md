@@ -33,3 +33,5 @@ features:
 ```js
 console.log('Hello, World!')
 ```
+
+<Test></Test>
