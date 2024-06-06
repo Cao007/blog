@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   lang: 'zh-CN',
   title: "狗子吹头的知识库",
-  description: "前端开发html/css/javascript/vue/react/node/express 后端开发python/flask/mysql/Django",
+  description: "狗子吹头的知识库 前端开发html/css/javascript/vue/react/node/express 后端开发python/flask/mysql/Django",
   markdown: {
     math: true,
     image: {
