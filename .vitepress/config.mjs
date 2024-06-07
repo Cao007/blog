@@ -45,6 +45,11 @@ export default defineConfig({
         ]
       },
       {
+        text: '政治', items: [
+          { text: '基础', link: '/politics/1.基础' },
+        ]
+      },
+      {
         text: '其它', items: [
           { text: '其它1', link: '/other' },
         ]
@@ -159,6 +164,14 @@ export default defineConfig({
           ]
         }
       ],
+      '/politics/1.基础/': [
+        {
+          text: '基础',
+          items: [
+            { text: '基础', link: '/politics/1.基础' },
+          ]
+        }
+      ]
     },
     aside: true,
     outlineTitle: '文章目录',
