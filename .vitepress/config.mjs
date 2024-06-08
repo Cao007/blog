@@ -45,6 +45,14 @@ export default defineConfig({
         ]
       },
       {
+        text: '408', items: [
+          { text: '数据结构', link: '/408/数据结构' },
+          { text: '计算机网络', link: '/408/计算机网络' },
+          { text: '计算机组成原理', link: '/408/计算机组成原理' },
+          { text: '操作系统', link: '/408/操作系统' },
+        ]
+      },
+      {
         text: '政治', items: [
           { text: '基础', link: '/politics/1.基础' },
         ]
@@ -161,6 +169,38 @@ export default defineConfig({
         {
           text: 'python爬虫',
           items: [
+          ]
+        }
+      ],
+      '/408/数据结构/': [
+        {
+          text: '数据结构',
+          items: [
+            { text: '数据结构', link: '/408/数据结构/' },
+          ]
+        }
+      ],
+      '/408/计算机网络/': [
+        {
+          text: '计算机网络',
+          items: [
+            { text: '计算机网络', link: '/408/计算机网络/' },
+          ]
+        }
+      ],
+      '/408/计算机组成原理/': [
+        {
+          text: '计算机组成原理',
+          items: [
+            { text: '计算机组成原理', link: '/408/计算机组成原理/' },
+          ]
+        }
+      ],
+      '/408/操作系统/': [
+        {
+          text: '操作系统',
+          items: [
+            { text: '操作系统', link: '/408/操作系统/' },
           ]
         }
       ],
