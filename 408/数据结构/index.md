@@ -432,11 +432,427 @@ typedef struct{
 
 
 
-# 第三章 栈、队列、矩阵
+# 第三章 栈、队列、串、矩阵
 
 ## 栈
 
+### 逻辑结构
+
+栈：只能在一端插入或删除的线性表
+
+- 栈顶（top）：允许进行插入删除操作的一端。
+
+- 栈底（bottom）：固定不变，不允许进行任何操作。
+
+- 先进后出（FILO）的特性
+
+卡特兰数：n 个不同元素进栈，能在任意时刻出栈，则出栈元素不同的排列顺序的个数为$$\frac{1}{n+1}C_{2n}^{n}$$
+
+
+
+### 存储结构
+
+**顺序栈**
+
+~~~c++
+typedef struct {
+    Elemtype data[maxSize];
+    int top; 
+}SeqStack;
+
+// 初始化
+SeqStack S;
+S.top = -1; //栈顶指针top指向栈顶元素
+
+// 入栈
+S.data[++S.top] = e;
+
+// 出栈
+e = S.data[S.top--];
+
+// 获取栈顶元素
+S.data[S.top];
+
+// 判满
+S.top == maxSize-1;
+
+// 判空
+S.top == -1;
+~~~
+
+~~~c++
+typedef struct{
+    Elemtype data[maxSize];
+    int top; 
+}SeqStack;
+
+// 初始化
+SeqStack S;
+S.top = 0; //栈顶指针top指向栈顶元素的下一个元素
+
+// 入栈
+S.data[S.top++] = e;
+
+// 出栈
+e = S.data[--S.top];
+
+// 获取栈顶元素
+S.data[S.top-1];
+
+// 判满
+S.top-1 == maxSize-1;
+
+// 判空
+S.top == 0;
+~~~
+
+
+
+**共享栈**
+
+~~~c++
+typedef struct{
+    Elemtype data[maxSize];
+    int top0,top1; 
+}ShareStack;
+
+// 初始化
+ShareStack S;
+S.top0 = -1;
+S.top1 = maxSize;
+
+// 判满
+S.top0+1 == S.top1; //top0入栈时栈满
+S.top1-1 == S.top0; //top1入栈时栈满
+
+// 判空
+S.top == -1 && S.top1 == maxSize;
+~~~
+
+
+
+**链栈**
+
+~~~c++
+// 链栈结点定义
+typedef struct {
+	Elemtype data;
+ 	struct LinkNode *next;    
+}LinkNode;
+
+// 链栈定义
+typedef struct {
+    LinkNode *top;
+}LinkStack;
+~~~
+
+### **括号匹配**
+
+~~~c++
+~~~
+
+
+
+### 进制转换
+
+~~~c++
+~~~
+
+
+
+### **表达式求值**
+
+#### 表达式的概念
+
+表达式：一个表达式由操作数、运算符、界限符组成。**界限符反映了运算的顺序**
+
+- **前后缀表达式不用界限符符也可以表达运算顺序**
+
+中缀表达式：运算符在操作数中间
+
+前缀表达式（波兰表达式）：运算符在操作数之前
+
+后缀表达式（逆波兰表达式）：运算符在操作数之后
+
+
+
+#### **中缀转后缀**
+
+**手算**
+
+从左到右遍历中缀表达式
+
+1. 确定中缀表达式中**各个运算符的运算顺序（左优先）**
+   - 左优先：只要左边运算符能先计算，则优先计算左边的
+2. 按照**“左操作数 右操作数 运算符”**组成一个新的操作数
+3. 验证：运算符升序，操作数相对顺序不变
+
+~~~bash
+# 中缀表达式
+A+B*(C-D)-E/F
+ 3 2  1  5 4
+ 
+# 后缀表达式
+ABCD-*+EF/-
+    123  45
+~~~
+
+**机算**
+
+从左到右遍历中缀表达式
+
+1. 操作数：直接加入后缀表达式
+
+2. 界限符："("入栈，若遇到")"则依次弹出()内的所有运算符，加入到后缀表达式
+
+3. 运算符：
+
+   - 若栈顶元素优先级≥当前运算符优先级，则依次弹出栈中优先级≥当前运算符的所有运算符，栈顶为"("或空则停止弹出，且当前运算符入栈
+
+   - 若栈顶元素优先级<当前运算符优先级，则当前运算符入栈
+
+<img src="./index.assets/default.jpg" alt="default" style="zoom:50%;" />
+
+#### 后缀表达式求值
+
+**手算**
+
+**从左到右**遍历后缀表达式，每遇到一个运算符，则将运算符**前**最近的两个操作数运算，运算结果作为一个操作数
+
+- 运算符前的第一个操作数为左操作数（**左** 右 根）
+- 运算符前的第二个操作数为右操作数（左 **右** 根）
+
+~~~bash
+# 后缀表达式
+ABCD-*+EF/-
+
+# 中缀表达式
+# C-D
+# B*(C-D)
+# A+B*(C-D)
+# A+B*(C-D) E/F
+# A+B*(C-D)-E/F
+A+B*(C-D)-E/F
+~~~
+
+**机算**
+
+**从左到右遍历后缀表达式**
+
+1. 所有字符依次入栈
+2. 每遇到一个运算符，则将栈内的操作数出栈。先出栈的操作数作为**右操作数**
+3. 将2的运算结果再入栈，可作为下个操作数
+
+<img src="./index.assets/default (4).jpg" alt="default (4)" style="zoom:50%;" />
+
+#### 中缀转前缀
+
+**手算**
+
+从右到左遍历中缀表达式
+
+1. 确定中缀表达式中**各个运算符的运算顺序（右优先）**
+   - 右优先：只要右边运算符能先计算，则优先计算右边的
+2. 按照**“运算符 左操作数 右操作数”**组成一个新的操作数
+3. 验证：运算符降序，操作数相对顺序不变
+
+~~~bash
+# 中缀表达式
+A+B*(C-D)-E/F
+ 5 3  2  4 1
+
+# 前缀表达式
++A-*B-CD/EF
+5 43 2  1
+~~~
+
+**机算**
+
+从右到左遍历中缀表达式
+
+1. 操作数：直接加入前缀表达式
+
+2. 界限符：")"入栈，若遇到"("则依次弹出()内的所有运算符，加入到前缀表达式
+
+3. 运算符：
+
+   - 若栈顶元素优先级≥当前运算符优先级，则依次弹出栈中优先级≥当前运算符的所有运算符，栈顶为"("或空则停止弹出，且当前运算符入栈
+
+   - 若栈顶元素优先级<当前运算符优先级，则当前运算符入栈
+
+<img src="./index.assets/default (2).jpg" alt="default (2)" style="zoom:50%;" />
+
+#### 前缀表达式求值
+
+**手算**
+
+**从右到左**遍历前缀表达式，每遇到一个运算符，则将运算符**后**最近的两个操作数运算，运算结果作为一个操作数
+
+- 运算符后的第一个操作数为左操作数（根 **左** 右）
+- 运算符后的第二个操作数为右操作数（根 左 **右**）
+
+~~~bash
+# 前缀表达式
++A-*B-CD/EF
+
+# 中缀表达式
+# E/F
+# C-D E/F
+# B*(C-D) E/F
+# B*(C-D)-E/F
+# A B*(C-D)-E/F
+# A+B*(C-D)-E/F
+A+B*(C-D)-E/F
+~~~
+
+**机算**
+
+**从右到左遍历前缀表达式**
+
+1. 所有字符依次入栈
+2. 每遇到一个运算符，则将栈内的操作数出栈。先出栈的操作数作为**左操作数**
+3. 将2的运算结果再入栈，可作为下个操作数
+
+<img src="./index.assets/default (3).jpg" alt="default (3)" style="zoom:50%;" />
+
+#### 中缀表达式求值
+
+**机算**
+
+
+
+### 函数调用栈、递归
+
+
+
 ## 队列
+
+### 逻辑结构
+
+队列：只允许在一端插入，另一端删除的线性表
+
+- 队头（front）：允许删除的一端。
+- 队尾（rear）：允许插入的一端。
+
+- 先进先出（FIFO）的特性
+
+
+
+### 存储结构
+
+**顺序队列**
+
+~~~c++
+typedef struct{
+    Elemtype data[MaxSize];
+    int front, rear;
+}SeqQueue;
+
+// 初始化
+SeqQueue Q;
+Q.front = 0; //front指向当前队头元素
+Q.rear = 0;  //rear指向队尾元素的下一个元素
+
+// 入队
+Q.data[Q.rear++] = e;
+
+// 出队
+e = Q.data[Q.front++];
+
+// 判空
+Q.front == Q.rear;
+    
+// 判满
+Q.rear == MaxSize; //存在假溢出
+~~~
+
+**循环队列**
+
+~~~c++
+typedef struct{
+    Elemtype data[MaxSize];
+    int front, rear;
+}SeqQueue;
+
+// 初始化
+SeqQueue Q;
+Q.front = 0; //front指向当前队头元素
+Q.rear = 0;  //rear指向队尾元素的下一个元素
+
+// 入队
+Q.data[Q.rear] = e;
+Q.rear = (Q.rear+1)%MaxSize;
+
+// 出队
+e = Q.data[Q.front];
+Q.front = (Q.front+1)%MaxSize;
+    
+// 元素个数
+(Q.rear-Q.front+MaxSize)%MaxSize;
+
+// 判空
+
+    
+// 判满
+
+~~~
+
+
+
+**链式队列**
+
+无头结点的链式队列：
+
+~~~c++
+// 链队列的结点
+typedef struct{
+	ElemType data;
+    struct LinkNode *next;
+}LinkNode;
+
+// 链队列
+typedef struct{
+	LinkNode *front, *rear;
+}LinkQueue;
+
+// 初始化
+LinkQueue Q;
+Q.front = NULL;
+Q.rear = NULL;
+
+// 入队
+LinkNode *s = (LinkNode *)malloc(sizeof(LinkNode));
+s.data = e;
+s.next = NULL;
+Q.rear->next = s;
+Q.rear = s;
+
+// 出队
+x = Q.front->data;
+if(Q.front->next == null){ //被删除结点是不是队列最后一个元素
+    Q.front = null;
+    Q.rear = null;
+}else{
+    Q.front = Q.front->next;
+}
+~~~
+
+**双端队列**
+
+![image-20240610180530635](index.assets/image-20240610180530635.png)
+
+### 队列的应用
+
+1. 判断双端队列中合法的出队顺序
+2. 树的层序遍历
+3. 图的广度优先搜索
+4. 解决主机与外部设备速度不匹配问题——利用队列作为缓冲区
+5. 解决多个进程使用有限的系统资源问题——FCFS（First Come First Service）策略
+6. 页面替换算法
+
+
+
+## 串
 
 ## 矩阵
 
