@@ -90,12 +90,14 @@
 ## 时间复杂度
 
 复杂度运算规则：
-
-![image-20240609200711911](index.assets/image-20240609200711911.png)
-
+$$
+O(f(n))+O(g(n))=O(max(f(n),g(n))\\
+O(f(n)) \times O(g(n))=O(f(n)\times g(n))
+$$
 常见的时间复杂度排序：
-
-![image-20240609200744552](index.assets/image-20240609200744552.png)
+$$
+O(1)\leq O(log_{2}{n})\leq O(n) \leq O(nlog_{2}{n}) \leq O(n^2) \leq O(n^3) \leq ... \leq O(n^k) \leq O(2^n) \leq O(n!) \leq O(n^n)
+$$
 
 - O($$n^2$$)表示执行时间与$$n^2$$成正比
 - O(1)表示执行时间为常量，与问题规模n无关
@@ -302,4 +304,153 @@ int main(){
 | n=1       | arr[n]+n = (1*4+4)B |
 
 - 故空间复杂度为O([(1+2+...+n)*4+4n])=O($$n^2$$)
+
+# 第二章 线性表
+
+## 线性表的逻辑结构
+
+线性表：n(n≥0)个相同数据类型的数据元素的有限序列
+
+- **逻辑上**有先后顺序，而非物理位置上的前后次序
+
+- 除表头元素外，每个元素有且仅有一个直接前驱
+
+- 除表尾元素外，每个元素有且仅有一个直接后继
+
+
+
+## 线性表的存储结构
+
+### 顺序存储结构—顺序表
+
+~~~c++
+// 静态分配
+typedef struct{
+	ElemType data[MaxSize];
+    int length;
+}SeqList;
+~~~
+
+~~~c++
+//动态分配
+typedef struct{
+	ElemType *data;
+    int MaxSize,length;
+}SeqList;
+
+//C: (Elemtype*)malloc(sizeof(Elemtype)*Size)
+//C++: new Elemtype[Size]
+~~~
+
+
+
+### 链式存储结构—链表
+
+**单链表**
+
+~~~c++
+// 结点的定义
+typedef struct LNode{ 
+    Elemtype data;
+	struct LNode *next;
+}LNode;
+
+// 链表的定义
+typedef struct LinkedList{
+	LNode *head;
+    int length;
+}LinkedList;
+~~~
+
+![image-20240610124521297](index.assets/image-20240610124521297.png)
+
+- 头结点：一般没有数据域
+- 头指针：指向第一个结点的指针，故头指针可能指向头结点或首元结点
+
+- 首元结点（开始结点）：第一个存放数据的结点
+
+- 单链表一般都是带头结点的，但是在做选择题的时候如果题目没有声明，那就是不带头结点
+
+
+
+**双链表**
+
+~~~c++
+// 结点的定义
+typedef struct DNode{ 
+    Elemtype data;
+    struct DNode *prior;
+    struct DNode *next;
+}DNode;
+~~~
+
+![image-20240610125017651](index.assets/image-20240610125017651.png)
+
+
+
+**循环单链表**
+
+![image-20240610125207360](index.assets/image-20240610125207360.png)
+
+
+
+**循环双链表**
+
+![image-20240610125321463](index.assets/image-20240610125321463.png)
+
+
+
+**静态链表**
+
+~~~c++
+typedef struct{
+    Elemtype data;
+    int cur; //游标（数组下标）
+}SLinkList[100]; //假设申请了100个连续的内存空间
+~~~
+
+![image-20240610125450311](index.assets/image-20240610125450311.png)
+
+## 线性表的运算
+
+**插入节点**
+
+![image-20240610125840372](index.assets/image-20240610125840372.png)
+
+
+
+**删除节点**
+
+![image-20240610131608747](index.assets/image-20240610131608747.png)
+
+
+
+**查找节点**
+
+- 按序查找
+- 按值查找
+
+
+
+# 第三章 栈、队列、矩阵
+
+## 栈
+
+## 队列
+
+## 矩阵
+
+
+
+# 第四章 树与二叉树
+
+# 第五章 图
+
+
+
+# 第六章 查找
+
+
+
+# 第七章 排序
 
