@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
-
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 /**
  * 站点全局配置
@@ -18,6 +20,16 @@ export default defineConfig({
     image: {
       lazyLoading: true,
     }
+  },
+  vite:{
+    plugins: [
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      })
+    ]
   },
 
   /**
