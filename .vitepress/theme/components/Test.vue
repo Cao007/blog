@@ -1,22 +1,14 @@
 <template>
-    <div>
-        <h1 @click="count++">{{ count }}</h1>
+    <div class="mb-4">
+      <el-button>Default</el-button>
+      <el-button type="primary">Primary</el-button>
+      <el-button type="success">Success</el-button>
+      <el-button type="info">Info</el-button>
+      <el-button type="warning">Warning</el-button>
+      <el-button type="danger">Danger</el-button>
     </div>
-</template>
-
-<script setup>
-import { ref } from 'vue';
-let count = ref(0);
-
-</script>
-
-<style scoped>
-h1 {
-    width: 100px;
-    height: 100px;
-    border: 1px solid #000;
-    text-align: center;
-    line-height: 100px;
-    cursor: pointer;
-}
-</style>
+  </template>
+  
+  <script  setup>
+  </script>
+  
