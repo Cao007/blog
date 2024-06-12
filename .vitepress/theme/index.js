@@ -2,6 +2,7 @@
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import Test from './components/Test.vue'
 import Comment from './components/Comment.vue'
 
@@ -15,6 +16,10 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
+    // 注册全局icon图标
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+      app.component(key, component)
+    }
     // 注册全局vue组件
     app.component('Test', Test)
   }
