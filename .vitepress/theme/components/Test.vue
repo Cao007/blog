@@ -38,7 +38,6 @@
 <script setup>
 import {
   Check,
-  Delete,
   Edit,
   Message,
   Search,
