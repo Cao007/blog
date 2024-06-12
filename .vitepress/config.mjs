@@ -29,7 +29,10 @@ export default defineConfig({
       Components({
         resolvers: [ElementPlusResolver()],
       })
-    ]
+    ],
+    ssr: {
+      noExternal: ['element-plus']
+    }
   },
 
   /**
