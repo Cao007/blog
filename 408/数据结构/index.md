@@ -103,7 +103,7 @@ $$
 O(1)\leq O(log_{2}{n})\leq O(n) \leq O(nlog_{2}{n}) \leq O(n^2) \leq O(n^3) \leq ... \leq O(n^k) \leq O(2^n) \leq O(n!) \leq O(n^n)
 $$
 
-- O($$n^2$$)表示执行时间与$$n^2$$成正比
+- O($n^2$)表示执行时间与$n^2$成正比
 - O(1)表示执行时间为常量，与问题规模n无关
 
 ~~~c++
@@ -126,7 +126,7 @@ for(i=1; i<=n; i*=2){
 }
 ~~~
 
-设自增k次退出循环，此时$$2^k$$=n，则有
+设自增k次退出循环，此时$2^k$=n，则有
 $$
 \sum_{i=1}^{2^k}1=k+1=log_{2}{n}+1=>O(log_{2}{n})
 $$
@@ -169,7 +169,7 @@ for(i=1; i<=n; i++){
 }
 ~~~
 
-设j自增k次退出循环, 则有$$2^k$$=i
+设j自增k次退出循环, 则有$2^k$=i
 $$
 \sum_{i=1}^{n}\sum_{j=1}^{2^k}1=\sum_{i=1}^{n}(k+1)=\sum_{i=1}^{n}(log_{2}{i}+1)=log_{2}{n!}+n=>O(log_{2}{n!})=O(nlog_{2}{n})
 $$
@@ -184,7 +184,7 @@ for(i=1; i<=n; i*=2){
 }
 ~~~
 
-设i自增k次退出循环, 此时$$2^k$$=n, k=$$log_{2}{n}$$
+设i自增k次退出循环, 此时$2^k$=n, k=$log_{2}{n}$
 $$
 \sum_{i=1}^{2^k}\sum_{j=1}^{i}1=\sum_{i=1}^{2^k}i=1+2+...+2^k=2^{k+1}-1=2n-1=>O(n)
 $$
@@ -239,7 +239,7 @@ $$
 
 用于计算空间复杂度的：形参，局部变量，数组
 
-- O($$n^2$$)表示所需辅助空间大小与$$n^2$$成正比
+- O($n^2$)表示所需辅助空间大小与$n^2$成正比
 - O(1)表示所需辅助空间大小为常量，与问题规模n无关，称为**原地工作**
 
 ~~~c++
@@ -307,7 +307,7 @@ int main(){
 | n=2       | arr[n]+n = (2*4+4)B |
 | n=1       | arr[n]+n = (1*4+4)B |
 
-- 故空间复杂度为O([(1+2+...+n)*4+4n])=O($$n^2$$)
+- 故空间复杂度为O([(1+2+...+n)*4+4n])=O($n^2$)
 
 # 第二章 线性表
 
@@ -450,7 +450,7 @@ typedef struct{
 
 - 先进后出（FILO）的特性
 
-卡特兰数：n 个不同元素进栈，能在任意时刻出栈，则出栈元素不同的排列顺序的个数为$$\frac{1}{n+1}C_{2n}^{n}$$
+卡特兰数：n 个不同元素进栈，能在任意时刻出栈，则出栈元素不同的排列顺序的个数为$\frac{1}{n+1}C_{2n}^{n}$
 
 
 
@@ -561,6 +561,41 @@ typedef struct {
 ### **括号匹配**
 
 ~~~c++
+#define _CRT_SECURE_NO_WARNINGS
+#include <bits/stdc++.h>
+using namespace std;
+
+bool check(string str) {
+	stack<char> Stack;
+	for (int i = 0; i < str.length(); i++)
+	{
+		// 遍历到左括号，左括号入栈
+		if (str[i] == '(' || str[i] == '[' || str[i] == '{') {
+			Stack.push(str[i]);
+		}
+		else {
+			// 1.遍历到右括号，若栈为空，则右括号多余
+			if (Stack.empty())
+				return false;
+			// 2.判断左右括号是否匹配
+			char topElem = Stack.top();
+			Stack.pop();
+			if ((str[i] == ')' && topElem != '(') ||
+				(str[i] == ']' && topElem != '[') ||
+				(str[i] == '}' && topElem != '{'))
+				return false;
+		}
+	}
+	// 3.遍历完字符串，若栈非空，则左括号多余
+	return Stack.empty();
+}
+
+int main() {
+	string s;
+	getline(cin, s);
+	cout << check(s);
+	return 0;
+}
 ~~~
 
 
@@ -596,7 +631,7 @@ typedef struct {
 
 1. 确定中缀表达式中**各个运算符的运算顺序（左优先）**
    - 左优先：只要左边运算符能先计算，则优先计算左边的
-2. 按照**“左操作数 右操作数 运算符”**组成一个新的操作数
+2. 按照**左操作数 右操作数 运算符**组成一个新的操作数
 3. 验证：运算符升序，操作数相对顺序不变
 
 ~~~bash
@@ -665,7 +700,7 @@ A+B*(C-D)-E/F
 
 1. 确定中缀表达式中**各个运算符的运算顺序（右优先）**
    - 右优先：只要右边运算符能先计算，则优先计算右边的
-2. 按照**“运算符 左操作数 右操作数”**组成一个新的操作数
+2. 按照**运算符 左操作数 右操作数**组成一个新的操作数
 3. 验证：运算符降序，操作数相对顺序不变
 
 ~~~bash
@@ -900,31 +935,229 @@ if(Q.front->next == null){ //被删除结点是不是队列最后一个元素
 
 ## 数组
 
-数组：n个相同的数据类型元素构成的有限序列，数组是线性表的推广
+数组：n(n≥1)个相同数据类型的数据元素的有限序列
 
-二维数组：M行N列的二维数组
+- 数组是线性表的推广
+- 除了初始化和销毁外，数组只有存取和修改元素的操作
+- 一维数组可以看做是线性表
+- 二维数组可以看做数据元素是定长线性表的线性表
 
-<img src="./index.assets/image-20240612023133155.png" alt="image-20240612023133155" style="zoom:50%;" />
-
-## 矩阵的压缩存储
-
-矩阵：数组一般下标从0开始，矩阵下标一般从1开始（同线性代数）
-
-矩阵的压缩：将多个值相同的元素只分配一个存储空间，零元素不分配空间
-
-
-
-### 对称矩阵
+一维数组元素的存储地址：
+$$
+Loc(a[i])=Loc(a[i-1])+sizeof(ElemType) \\
+Loc(a[i])=Loc(a[0])+i\times sizeof(ElemType)
+$$
 
 
+二维数组（m行n列）元素的存储地址：
+
+![image-20240614182112737](index.assets/image-20240614182112737.png)
+$$
+Loc(a[i][j])=Loc(a[0][0])+(i\times N +j)\times sizeof(ElemType)
+$$
+
+
+![image-20240614182228816](index.assets/image-20240614182228816.png)
+$$
+Loc(a[i][j])=Loc(a[0][0])+(j\times M + i)\times sizeof(ElemType)
+$$
+
+
+## 矩阵
+
+### 矩阵的概念
+
+矩阵：一般用二维数组存储（数据结构中的矩阵同线性代数中的矩阵）
+
+- 矩阵的开始下标可以是(0,0)或(1,1)
+- 二维数组的开始下标只能是(0,0)
 
 
 
-### 三角矩阵
+### 矩阵的运算
 
-### 三对角矩阵
+~~~c++
+#include<bits/stdc++.h>
+using namespace std;
+const int MaxSize = 10;
 
-### 稀疏矩阵
+// 打印
+void printMatrix(int arr[][MaxSize], int m, int n) {
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++) {
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+/*
+	arr1的m行n列 转置为 arr2的n行m列
+*/
+void transMatrix(int arr1[][MaxSize], int arr2[][MaxSize], int m, int n) {
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++) {
+			arr2[j][i] = arr1[i][j];
+		}
+	}
+}
+
+/*
+	arr1的m行n列 乘以 arr2的n行s列
+	res为n行s列矩阵
+*/
+void mulMatrix(int res[][MaxSize], int arr1[][MaxSize], int arr2[][MaxSize], int m, int n, int s) {
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < s; j++) {
+			res[i][j] = 0;
+			for (int k = 0; k < n; k++) {
+				res[i][j] += arr1[i][k] * arr2[k][j];
+			}
+		}
+	}
+}
+
+int main() {
+	int arr1[MaxSize][MaxSize] = {
+		{1,2,3},
+		{4,5,6}
+	};
+	int arr2[MaxSize][MaxSize] = { 0 };
+	transMatrix(arr1, arr2, 2, 3);
+	printMatrix(arr2, 3, 2);
+
+	int res[MaxSize][MaxSize] = { 0 };
+	mulMatrix(res, arr1, arr2, 2, 3, 2);
+	printMatrix(res, 2, 2);
+}
+~~~
+
+
+
+### 矩阵的压缩存储
+
+矩阵的压缩存储：
+
+- 将多个值相同的元素只分配一个存储空间
+- 零元素不分配空间
+
+
+
+#### 对称矩阵
+
+![image-20240614200516135](index.assets/image-20240614200516135.png)
+
+- 存储主对角线和下三角
+- 行优先
+
+- 矩阵下标从(1,1)开始，数组下标从0开始
+
+待定系数法：行数等差数列求和，故函数是与行数i相关的二次函数。列数j的系数为1。
+
+$设k=ai^2+bi+c+j$，代入主对角线的元素下标解出a、b、c
+
+- (1,1)->k=0 即 0=a+b+c+1
+- (2,2)->k=12 即12=4a+2b+c+2
+- (3,3)->k=23 即23=9a+3b+c+3
+
+![image-20240614200727761](index.assets/image-20240614200727761.png)
+
+- 存储主对角线和下三角
+- 列优先
+
+- 矩阵下标从(1,1)开始，数组下标从0开始
+
+待定系数法：列数等差数列求和，故函数是与列数j相关的二次函数。行数i的系数为1。
+
+$设k=aj^2+bj+c+i$，代入主对角线的元素下标解出a、b、c
+
+
+
+#### 三角矩阵
+
+存储上三角（或下三角）区域 + 常数区域
+
+上三角（或下三角）区域的元素的存储同对称矩阵
+
+
+
+#### 三对角矩阵
+
+![image-20240614222523213](index.assets/image-20240614222523213.png)
+
+- 存储三对角线
+- 行优先
+
+- 矩阵下标从(1,1)开始，数组下标从0开始
+
+待定系数法：$设k=ai+bj+c$，解出a、b、c
+
+
+
+#### 稀疏矩阵
+
+稀疏矩阵：零元素多，且非零元素没有规律性
+
+##### 三元组表示法
+
+<img src="./index.assets/image-20240614224934262.png" alt="image-20240614224934262" style="zoom: 67%;" />
+
+~~~c++
+// 三元组一行的定义
+typedef struct{
+	int i; //非零元素的行下标
+    int j; //非零元素的列下标
+    ElemType val;
+}TriRow;
+
+// 三元组表的定义
+typedef struct{
+	TriRow data[MaxSize];
+    int rows; //矩阵行数
+    int cols; //矩阵列数
+    int noZeroTotal; //非零元素个数
+}TriMatrix;
+~~~
+
+
+
+##### **伪地址表示法**
+
+
+
+##### 领接表表示法
+
+<img src="./index.assets/image-20240614230933774.png" alt="image-20240614230933774" style="zoom:67%;" />
+
+
+
+##### 十字链表法
+
+<img src="./index.assets/image-20240614230806195.png" alt="image-20240614230806195" style="zoom:67%;" />
+
+~~~c++
+// 普通结点
+typedef struct{
+	int row; // 非零元素的行下标
+    int col; // 非零元素的列下标
+    ElemType data;
+    struct OLNode *right; //指向同一行的右侧结点
+    struct OLNode *down;  //指向同一列的下侧结点
+}OLNode;
+
+// 十字链表的头结点
+typedef struct{
+	int rows; // 矩阵行数
+    int cols; // 矩阵列数
+    int noZeroTotal; // 矩阵中非零元素个数
+    ElemType data;
+    struct OLNode *rightHeadArr; //右侧头结点数组
+    struct OLNode *downHeadArr;  //下侧头结点数组
+}CrossList;
+~~~
 
 
 
