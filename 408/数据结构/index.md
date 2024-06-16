@@ -128,8 +128,10 @@ for(i=1; i<=n; i*=2){
 
 设自增k次退出循环，此时$2^k$=n，则有
 $$
-\sum_{i=1}^{2^k}1=k+1=log_{2}{n}+1=>O(log_{2}{n})
+\sum_{i=1}^{n}1=\sum_{i=1}^{2^k}1=\sum_{i=2^0}^{2^k}1=k+1=log_{2}{n}+1=>O(log_{2}{n})
 $$
+
+
 
 ~~~c++
 int i,j;
@@ -233,6 +235,30 @@ $$
 O(n)
 $$
 
+**master公式**
+$$
+T(N)=aT(\frac{N}{b})+O(N^d)\\
+1.若log_{b}{a}>d，则O(n^{log_{b}{a}})\\
+2.若log_{b}{a}<d，则O(n^{d})\\
+3.若log_{b}{a}=d，则O(nlog_{2}{n})\\
+$$
+
+- T(N)为母问题的数据量
+- $T(\frac{N}{b})$是子问题的规模
+- $O(N^d)$是除了调用之外剩余的时间复杂度
+
+例子：
+$$
+T(n)=
+\begin{cases}
+    1, &\text{n=1}\\
+    2T(\frac{n}{2})+n,&\text{n>1}
+\end{cases}
+$$
+
+$$
+因为log_{2}{2}=1=d,所以时间复杂度为O(nlog_{2}{n})
+$$
 
 
 ## 空间复杂度
@@ -1361,7 +1387,7 @@ next[j]数组：
 nextVal[j]数组：
 
 1. **nextVal(1)=0**
-2. pattern[j]与pattern[next[j]]（别人）是否相同
+2. pattern[j]==pattern[next[j]]（别人）是否相同？
    - 相同，则**nextVal[j]=别人的nextVal**
    - 不同，则**nextVal[j]=自己的next**
 
@@ -1371,7 +1397,7 @@ nextVal[j]数组：
 | next[j]    | **0** | 1    | 1    | 2    | 2    | 3    | 1    | 2    |
 | nextVal[j] | **0** | 1    | 0    | 2    | 1    | 3    | 0    | 2    |
 
-
+<img src="./index.assets/default (7).jpg" alt="default (7)" style="zoom:50%;" />
 
 下标从0开始
 
@@ -1386,7 +1412,7 @@ next[j]数组：
 nextVal[j]数组：
 
 1. **nextVal(0)=-1**
-2. pattern[j]与pattern[next[j]]（别人）是否相同
+2. pattern[j]==pattern[next[j]]（别人）是否相同？
    - 相同，则**nextVal[j]=别人的nextVal**
    - 不同，则**nextVal[j]=自己的next**
 
@@ -1405,6 +1431,30 @@ nextVal[j]数组：
 ### 树的概念
 
 ### 树的存储
+
+双亲表示法
+
+~~~c++
+typedef struct{
+	ElemType data;//数据域
+    int parent;   //指向父节点
+}PNode;
+
+typedef struct{
+	PNode nodes[MaxSize];//结点数组
+    int n;  //真实结点个数
+}PTree;
+~~~
+
+孩子兄弟表示法
+
+~~~c++
+typedef struct CSNode {
+	ElemType data; //数据域
+	struct CSNode* firstChild, //指向第一个孩子结点
+		* nextsibling; //指向右边第一个兄弟结点
+}CSNode, *CSTree;
+~~~
 
 
 
