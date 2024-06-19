@@ -21,7 +21,7 @@ export default defineConfig({
       lazyLoading: true,
     }
   },
-  vite:{
+  vite: {
     plugins: [
       AutoImport({
         resolvers: [ElementPlusResolver()],
@@ -72,6 +72,13 @@ export default defineConfig({
           { text: '大模型', link: '/AI/大模型' },
           { text: 'CV', link: '/AI/CV' },
           { text: 'NLP', link: '/AI/NLP' },
+        ]
+      },
+      {
+        text: '数学', items: [
+          { text: '微积分', link: '/math/微积分' },
+          { text: '线性代数', link: '/math/线性代数' },
+          { text: '概率论与数理统计', link: '/math/概率论与数理统计' },
         ]
       },
       {
@@ -226,7 +233,7 @@ export default defineConfig({
           ]
         }
       ],
-      '/AI/大模型/':[
+      '/AI/大模型/': [
         {
           text: '大模型2',
           items: [
@@ -234,7 +241,7 @@ export default defineConfig({
           ]
         }
       ],
-      '/AI/CV/':[
+      '/AI/CV/': [
         {
           text: 'CV',
           items: [
@@ -242,11 +249,35 @@ export default defineConfig({
           ]
         }
       ],
-      '/AI/NLP/':[
+      '/AI/NLP/': [
         {
           text: 'NLP',
           items: [
             { text: 'NLP', link: '/AI/NLP/' },
+          ]
+        }
+      ],
+      '/math/微积分': [
+        {
+          text: '微积分',
+          items: [
+            { text: '微积分', link: '/math/微积分/' },
+          ]
+        }
+      ],
+      '/math/线性代数': [
+        {
+          text: '线性代数',
+          items: [
+            { text: '线性代数', link: '/math/线性代数/' },
+          ]
+        }
+      ],
+      '/math/概率论与数理统计': [
+        {
+          text: '概率论与数理统计',
+          items: [
+            { text: '概率论与数理统计', link: '/math/概率论与数理统计/' },
           ]
         }
       ],
