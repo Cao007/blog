@@ -68,6 +68,13 @@ export default defineConfig({
         ]
       },
       {
+        text: 'AI', items: [
+          { text: '大模型', link: '/AI/大模型' },
+          { text: 'CV', link: '/AI/CV' },
+          { text: 'NLP', link: '/AI/NLP' },
+        ]
+      },
+      {
         text: '政治', items: [
           { text: '基础', link: '/politics/1.基础' },
         ]
@@ -216,6 +223,30 @@ export default defineConfig({
           text: '操作系统',
           items: [
             { text: '操作系统', link: '/408/操作系统/' },
+          ]
+        }
+      ],
+      '/AI/大模型/':[
+        {
+          text: '大模型2',
+          items: [
+            { text: '大模型', link: '/AI/大模型/' },
+          ]
+        }
+      ],
+      '/AI/CV/':[
+        {
+          text: 'CV',
+          items: [
+            { text: 'CV', link: '/AI/CV/' },
+          ]
+        }
+      ],
+      '/AI/NLP/':[
+        {
+          text: 'NLP',
+          items: [
+            { text: 'NLP', link: '/AI/NLP/' },
           ]
         }
       ],
