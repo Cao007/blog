@@ -57,6 +57,8 @@ export default defineConfig({
         text: '后端', items: [
           { text: 'python语法', link: '/backend/1.python语法' },
           { text: 'python爬虫', link: '/backend/2.python爬虫' },
+          { text: 'flask', link: '/backend/3.flask' },
+          { text: 'Django', link: '/backend/4.Django' },
         ]
       },
       {
@@ -198,6 +200,22 @@ export default defineConfig({
         {
           text: 'python爬虫',
           items: [
+          ]
+        }
+      ],
+      '/backend/3.flask/': [
+        {
+          text: 'flask',
+          items: [
+            { text: 'flask', link: '/backend/3.flask/' },
+          ]
+        }
+      ],
+      '/backend/4.Django/': [
+        {
+          text: 'Django',
+          items: [
+            { text: 'Django', link: '/backend/4.Django/' },
           ]
         }
       ],
