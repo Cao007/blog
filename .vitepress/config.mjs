@@ -51,6 +51,13 @@ export default defineConfig({
           { text: 'HTML', link: '/frontend/1.HTML/index.md' },
           { text: 'CSS', link: '/frontend/2.CSS/index.md' },
           { text: 'JS', link: '/frontend/3.JS/index.md' },
+          { text: 'Vue', link: '/frontend/Vue/index.md' },
+          { text: 'React', link: '/frontend/React/index.md' },
+          { text: 'Node', link: '/frontend/Node/index.md' },
+          { text: 'Express', link: '/frontend/Express/index.md' },
+          { text: 'Koa', link: '/frontend/Koa/index.md' },
+          { text: 'webpack', link: '/frontend/webpack/index.md' },
+          { text: 'vite', link: '/frontend/vite/index.md' },
         ]
       },
       {
