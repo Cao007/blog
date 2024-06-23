@@ -97,7 +97,7 @@ export default defineConfig({
       },
       {
         text: '其它', items: [
-          { text: '其它1', link: '/other' },
+          { text: 'Git', link: '/others/Git/git.md' },
         ]
       }
     ],
@@ -313,7 +313,15 @@ export default defineConfig({
             { text: '基础', link: '/politics/1.基础' },
           ]
         }
-      ]
+      ],
+      '/others/Git/': [
+        {
+          text: 'git',
+          items: [
+            { text: 'git', link: '/others/Git/git.md' },
+          ]
+        }
+      ],
     },
     aside: true,
     outlineTitle: '文章目录',
