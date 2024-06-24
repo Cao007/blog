@@ -78,6 +78,8 @@ export default defineConfig({
       },
       {
         text: 'AI', items: [
+          { text: '机器学习', link: '/AI/机器学习' },
+          { text: '深度学习', link: '/AI/深度学习' },
           { text: '大模型', link: '/AI/大模型' },
           { text: 'CV', link: '/AI/CV' },
           { text: 'NLP', link: '/AI/NLP' },
@@ -258,9 +260,25 @@ export default defineConfig({
           ]
         }
       ],
+      '/AI/机器学习/': [
+        {
+          text: '',
+          items: [
+            { text: '机器学习', link: '/AI/机器学习/' },
+          ]
+        }
+      ],
+      '/AI/深度学习/': [
+        {
+          text: '',
+          items: [
+            { text: '深度学习', link: '/AI/深度学习/' },
+          ]
+        }
+      ],
       '/AI/大模型/': [
         {
-          text: '大模型2',
+          text: '大模型',
           items: [
             { text: '大模型', link: '/AI/大模型/' },
           ]
