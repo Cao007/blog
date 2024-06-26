@@ -100,6 +100,7 @@ export default defineConfig({
       {
         text: '其它', items: [
           { text: 'Git', link: '/others/Git/git.md' },
+          { text: 'Docker', link: '/others/docker/docker.md' },
         ]
       }
     ],
@@ -340,6 +341,14 @@ export default defineConfig({
           ]
         }
       ],
+      '/others/docker/': [
+        {
+          text: 'docker',
+          items: [
+            { text: 'docker', link: '/others/docker/docker.md' },
+          ]
+        }
+      ]
     },
     aside: true,
     outlineTitle: '文章目录',
