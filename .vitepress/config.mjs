@@ -51,6 +51,7 @@ export default defineConfig({
           { text: 'HTML', link: '/frontend/1.HTML/index.md' },
           { text: 'CSS', link: '/frontend/2.CSS/index.md' },
           { text: 'JS', link: '/frontend/3.JS/index.md' },
+          { text: 'TS', link: '/frontend/4.TS/index.md' },
           { text: 'Vue', link: '/frontend/Vue/index.md' },
           { text: 'React', link: '/frontend/React/index.md' },
           { text: 'Node', link: '/frontend/Node/index.md' },
@@ -192,6 +193,14 @@ export default defineConfig({
           items: [
             { text: '块级元素', link: '/frontend/1.HTML/1.块级元素' },
             { text: '行内元素', link: '/frontend/1.HTML/2.行内元素' },
+          ]
+        }
+      ],
+      '/frontend/4.TS/': [
+        {
+          text: 'TS',
+          items: [
+            { text: 'TS', link: '/frontend/4.TS' },
           ]
         }
       ],
