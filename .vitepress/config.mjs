@@ -94,11 +94,6 @@ export default defineConfig({
         ]
       },
       {
-        text: '政治', items: [
-          { text: '基础', link: '/politics/1.基础' },
-        ]
-      },
-      {
         text: '其它', items: [
           { text: 'Git', link: '/others/Git/git.md' },
           { text: 'Docker', link: '/others/docker/docker.md' },
@@ -331,14 +326,6 @@ export default defineConfig({
           text: '概率论与数理统计',
           items: [
             { text: '概率论与数理统计', link: '/math/概率论与数理统计/' },
-          ]
-        }
-      ],
-      '/politics/1.基础/': [
-        {
-          text: '基础',
-          items: [
-            { text: '基础', link: '/politics/1.基础' },
           ]
         }
       ],
