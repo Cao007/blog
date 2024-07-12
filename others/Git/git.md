@@ -31,7 +31,72 @@ git config --list --global
 
 ## 分支
 
-![image-20230110200200066](git.assets/image-20230110200200066.png)
+![image-20240712233633962](git.assets/image-20240712233633962.png)
+
+![image-20240712233658326](git.assets/image-20240712233658326.png)
+
+~~~bash
+# 查看所有分支
+git branch -a
+# 创建并切换到dev分支
+git checkout -b dev
+
+# 在dev分支上进行一些更改
+git add .
+git commit -m "修改..."
+git push -u origin dev
+
+# 切换回main分支
+git checkout main
+# 更新main分支
+git pull origin main
+# 合并dev分支到main分支
+git merge dev
+# 推送更新的main分支到远程仓库
+git push origin main
+~~~
+
+
+
+## 远程仓库操作
+
+~~~bash
+# 查看本地关联的所有远程仓库
+git remote -v
+~~~
+
+
+
+## 提交修正
+
+1. 多个小的commit提交，产生冗余
+2. 漏提交文件等等
+
+~~~bash
+git commit --amend -m "修正后再次提交"
+~~~
+
+
+
+## git日志
+
+![image-20240713005858927](git.assets/image-20240713005858927.png)
+
+~~~bash
+# 引用日志
+# 保存在本地，记录了仓库的所有改变
+git reflog
+~~~
+
+
+
+## 打标签及发行版
+
+![image-20240713012238556](git.assets/image-20240713012238556.png)
+
+创建发行版
+
+![image-20240713013639392](git.assets/image-20240713013639392.png)
 
 
 
@@ -82,6 +147,9 @@ git config --global --list
 ## 修改文件后提交
 
 ~~~bash
+# 拉取最新代码
+git pull
+
 # 查看文件状态
 git status -s
 
@@ -93,14 +161,6 @@ git commit -m "修改后"
 
 # 3.提交到远程仓库的分支
 git push
-~~~
-
-
-
-## 拉取最新代码
-
-~~~bash
-git pull
 ~~~
 
 
@@ -132,6 +192,13 @@ ssh-keygen
 
 ![image-20240517003456163](git.assets/image-20240517003456163.png)
 
+~~~bash
+# 测试ssh连通性
+ssh -T git@github.com
+~~~
+
+
+
 3.使用ssh地址clone项目
 
 ~~~bash
@@ -154,13 +221,38 @@ git clone git@github.com:Cao007/learn.git
 
 ![image-20240517004704825](git.assets/image-20240517004704825.png)
 
-### fork项目
+### fork与PR
 
 1.fork项目到自己的仓库
 
 ![image-20240517013503916](git.assets/image-20240517013503916.png)
 
 2.clone项目到本地，修改项目
+
+~~~bash
+# 克隆你的fork仓库到本地
+git clone https://github.com/your-username/your-forked-repo.git
+cd your-forked-repo
+
+# 添加上游仓库作为远程仓库
+git remote add upstream https://github.com/original-owner/original-repo.git
+
+# 切换到main分支
+git checkout main
+
+
+# 获取并合并上游仓库的main分支到本地main分支
+git pull upstream main
+
+# 如果有冲突，解决冲突后添加文件并提交
+# git add <conflicted-file>
+# git commit
+
+# 将更新推送到你的远程fork仓库
+git push origin main
+~~~
+
+
 
 3.pull request
 
