@@ -97,6 +97,7 @@ export default defineConfig({
         text: '其它', items: [
           { text: 'Git', link: '/others/Git/git.md' },
           { text: 'Docker', link: '/others/docker/docker.md' },
+          { text: 'VitePress', link: '/others/VitePress/vitepress.md' },
         ]
       }
     ],
@@ -342,6 +343,14 @@ export default defineConfig({
           text: 'docker',
           items: [
             { text: 'docker', link: '/others/docker/docker.md' },
+          ]
+        }
+      ],
+      '/others/VitePress/': [
+        {
+          text: 'VitePress',
+          items: [
+            { text: 'VitePress', link: '/others/VitePress/vitepress.md' },
           ]
         }
       ]
