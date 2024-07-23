@@ -5,4 +5,5 @@
 
 .medium-zoom-image {
     z-index: 999;
+    zoom: normal !important;
 }

@@ -213,6 +213,22 @@ export default {
 
 
 
+解决图片放大时，不显示问题（样式冲突）
+
+~~~css
+/* mediumZoom图片缩放 */
+.medium-zoom-overlay {
+    z-index: 999;
+}
+
+.medium-zoom-image {
+    z-index: 999;
+    zoom: normal !important;
+}
+~~~
+
+
+
 # ToDo
 
 ## 自动提取md标题作为sidebar
