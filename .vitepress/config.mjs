@@ -98,6 +98,7 @@ export default defineConfig({
           { text: 'Git', link: '/others/Git/git.md' },
           { text: 'Docker', link: '/others/docker/docker.md' },
           { text: 'VitePress', link: '/others/VitePress/vitepress.md' },
+          { text: 'Linux', link: '/others/Linux/Linux.md' },
         ]
       }
     ],
@@ -351,6 +352,14 @@ export default defineConfig({
           text: 'VitePress',
           items: [
             { text: 'VitePress', link: '/others/VitePress/vitepress.md' },
+          ]
+        }
+      ],
+      '/others/Linux/': [
+        {
+          text: 'Linux',
+          items: [
+            { text: 'Linux', link: '/others/Linux/Linux.md' },
           ]
         }
       ]
