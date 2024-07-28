@@ -25,6 +25,17 @@ git config --list --global
 
 ## 回溯
 
+~~~bash
+# 查看提交历史
+git log
+
+# 回溯并丢弃修改（硬重置）
+git reset --hard 提交id
+
+# 强制推送会覆盖远程仓库的历史记录
+git push origin main --force
+~~~
+
 ![image-20230110202223353](git.assets/image-20230110202223353.png)
 
 
@@ -34,6 +45,8 @@ git config --list --global
 ![image-20240712233633962](git.assets/image-20240712233633962.png)
 
 ![image-20240712233658326](git.assets/image-20240712233658326.png)
+
+创建分支，上传到远程分支
 
 ~~~bash
 # 查看所有分支
@@ -46,6 +59,16 @@ git add .
 git commit -m "修改..."
 git push -u origin dev
 
+# 切换到dev分支，上传到远程分支
+git push origin dev
+
+# 设置本地分支dev跟踪远程分支dev
+git push --set-upstream origin dev
+~~~
+
+合并分支
+
+~~~bash
 # 切换回main分支
 git checkout main
 # 更新main分支
