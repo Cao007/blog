@@ -49,6 +49,8 @@ git push origin main --force
 创建分支，上传到远程分支
 
 ~~~bash
+# 同步和清理本地存储的远程分支引用
+git fetch --prune
 # 查看所有分支
 git branch -a
 # 创建并切换到dev分支
