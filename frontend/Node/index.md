@@ -70,8 +70,36 @@ npm config list
 
 
 # npm包发布
+~~~bash
+# 登录，注意当前的npm源是否是官方源
+npm login
 
+# 查看登录的账号
+npm whoami
 
+# 发布
+npm publish
+~~~
+更新已发布的包
+~~~bash
+# 版本号
+major：主版本号（大版本）
+minor：次版本号（小更新）
+patch：补丁号（补丁）
+premajor：预备主版本
+preminor: 预备次版本
+prepatch：预备补丁版本
+prerelease：预发布版本
+
+# 更新版本，默认初始版本为1.0.0
+npm version patch  // 1.0.1 表示小的bug修复
+npm version minor // 1.1.0 表示新增一些小功能
+npm version mmajor // 2.0.0 表示大的版本或大升级
+npm version preminor // 1.1.0-0 后面多了个0，表示预发布
+
+# 发布
+npm publish
+~~~
 
 # 模块化
 
