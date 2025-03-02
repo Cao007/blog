@@ -1,0 +1,11 @@
+@use "./variables.css";
+
+/* mediumZoom图片缩放 */
+.medium-zoom-overlay {
+  z-index: 999;
+}
+
+.medium-zoom-image {
+  z-index: 999;
+  zoom: normal !important;
+}

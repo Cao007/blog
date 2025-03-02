@@ -29,9 +29,6 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
-
 ```js
-console.log('Hello, World!')
+console.log("Hello, World!");
 ```
-
-<Test></Test>
